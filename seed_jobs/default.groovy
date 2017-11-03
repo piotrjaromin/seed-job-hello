@@ -1,6 +1,6 @@
 import groovy.json.JsonSlurper
 
-def configFile = new File("../config/pipelines.json")
+def configFile = new File('${WORKSPACE}/config/pipelines.json')
 def config = new JsonSlurper().parseText(configFile.text)
 
 

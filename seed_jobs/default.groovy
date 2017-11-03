@@ -27,7 +27,7 @@ config.pipelines.each { pipeline ->
             scm('H/15 * * * *')
         }
         steps {
-            shell "Look! I'm building ${BRANCH}!"
+            shell "Look! I'm building!"
         }
     }
 }

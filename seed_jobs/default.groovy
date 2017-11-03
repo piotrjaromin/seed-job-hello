@@ -14,7 +14,7 @@ config.pipelines.each { pipeline ->
         scm {
             git {
                 remote {
-                    url "${config.gitPrefix}/${branch.git}"
+                    url "${config.gitPrefix}/${pipeline.git}"
                     branch pipeline.branch
                 }
                 extensions {

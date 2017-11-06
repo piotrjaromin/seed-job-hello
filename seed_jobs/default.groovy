@@ -6,11 +6,16 @@ def config = new JsonSlurper().parseText(configFile.text)
 
 config.pipelines.each { pipeline ->
 
-    job("${pipeline.name}-${pipeline.branch}-build") {
-        description "Building the ${pipeline.branch} branch."
+    pipelineJob("${pipeline.name}-${pipeline.branch}-build") {
         parameters {
             stringParam('COMMIT', 'HEAD', 'Commit to build')
         }
+        definition {
+            cps {
+                    script "Jenkinsfile"
+                }
+        }
+        description "Building the ${pipeline.branch} branch."
         scm {
             git {
                 remote {

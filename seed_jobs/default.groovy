@@ -22,7 +22,7 @@ config.pipelines.each { pipeline ->
                         }
                     }
                 }
-                scriptPath "Jenkinsfile"
+                scriptPath getScriptPath(pipeline)
             }
         }
         triggers {

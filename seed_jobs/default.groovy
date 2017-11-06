@@ -17,7 +17,7 @@ config.pipelines.each { pipeline ->
                     filterable()
                     choiceType('SINGLE_SELECT')
                     groovyScript {
-                        script("[${params.values.join(',')}]")
+                        script("[${param.values.join(',')}]")
                         fallbackScript('"fallback choice"')
                     }
                 }

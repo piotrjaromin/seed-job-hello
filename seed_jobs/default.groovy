@@ -15,9 +15,10 @@ config.pipelines.each { pipeline ->
             cpsScm {
                 scm {
                     git {
-                        branch pipeline.branch
+                        branch pipeline.branch?: "master"
                         remote {
-                            url "${config.gitPrefix}/${pipeline.git}"
+                            url getRepoUrl(config, pipeline)
+                            credentials config.gitCredentials
                         }
                     }
                 }
@@ -28,4 +29,16 @@ config.pipelines.each { pipeline ->
             scm('H/15 * * * *')
         }
     }
+}
+
+
+String getScriptPath(pipeline) {
+    return pipeline.scriptPath?: "Jenkinsfile"
+}
+
+String getRepoUrl(config, pipeline) {
+    if ( !pipeline.git ) {
+        return "${config.gitPrefix}/${defaultGitProject.git}"
+    }
+    return "${config.gitPrefix}/${pipeline.git}"
 }

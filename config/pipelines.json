@@ -1,10 +1,16 @@
 {
     "gitPrefix" : "git@github.com:piotrjaromin",
+    "gitCredentials" : "da8c79e4-7377-4cf4-900a-9107828d6eaa",
+    "defaultGitProject" : "seed-job-hello.git",
     "pipelines": [
         {
             "name" : "test-pipeline",
             "git" : "go-login-backend.git",
             "branch" : "master"
+        },
+        {
+            "name": "custom-hello",
+            "scriptPath" : "scripts/hello.groovy"
         }
     ]
 }

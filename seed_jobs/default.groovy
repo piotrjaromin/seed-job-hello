@@ -38,7 +38,7 @@ String getScriptPath(pipeline) {
 
 String getRepoUrl(config, pipeline) {
     if ( !pipeline.git ) {
-        return "${config.gitPrefix}/${defaultGitProject.git}"
+        return "${config.gitPrefix}/${config.defaultGitProject.git}"
     }
     return "${config.gitPrefix}/${pipeline.git}"
 }

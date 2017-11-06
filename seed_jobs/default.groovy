@@ -10,6 +10,18 @@ config.pipelines.each { pipeline ->
         description "Building the ${pipeline.branch} branch."
         parameters {
             stringParam('COMMIT', 'HEAD', 'Commit to build')
+
+            pipeline?.parameters.each { param ->
+                activeChoiceParam(param.name) {
+                    description(param?.description)
+                    filterable()
+                    choiceType('SINGLE_SELECT')
+                    groovyScript {
+                        script("[${params.values.join(',')}]")
+                        fallbackScript('"fallback choice"')
+                    }
+                }
+            }
         }
         definition {
             cpsScm {

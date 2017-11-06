@@ -6,7 +6,13 @@
         {
             "name" : "test-pipeline",
             "git" : "go-login-backend.git",
-            "branch" : "master"
+            "branch" : "master",
+            "parameters" : [
+                {
+                    "name" : "actionType",
+                    "values" : ["deploy", "remove"]
+                }
+            ]
         },
         {
             "name": "custom-hello",
